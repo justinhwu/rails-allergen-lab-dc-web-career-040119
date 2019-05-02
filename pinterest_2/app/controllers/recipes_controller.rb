@@ -6,18 +6,20 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    8.times {@recipe.ingredients.build}
+    3.times {@recipe.recipe_ingredients.build}
+    3.times {@recipe.ingredients.build}
+
   end
 
   def create
-    byebug
     @recipe = Recipe.new(recipe_params(:name, :user_id))
-    @ingredient = @recipe.ingredients.build(recipe_params(:ingredients[:name]))
-    @recipe.recipe_ingredients.build(recipe_params(@ingredient.ingredient_id, :ingredients[:quantity]))
     if @recipe.invalid?
       render :new
     else
       @recipe.save
+      @recipe.recipe_ingredients_attributes = recipe_params(
+        recipe_ingredients_attributes: [:quantity, ingredients: [:name]]
+      )
       redirect_to recipe_path(@recipe)
     end
   end

@@ -5,17 +5,20 @@
 
   <div class="existing-ingredients form-box">
   <label> Select the ingredients for this recipe</label><br>
-  <%= f.fields_for :ingredients do |ingredient| %>
-    <%= ingredient.label "Please enter a quantity for the ingredient"%>
-    <%= ingredient.text_field :quantity%>
+  <%= f.fields_for :recipe_ingredients do |r_i| %>
+    <%= r_i.label "Please enter a quantity for the ingredient"%>
+    <%= r_i.text_field :quantity%>
 
-
-    <%= ingredient.text_field :name, list: "ingredients_autocomplete"%>
-    <datalist id="ingredients_autocomplete">
-      <% Ingredient.all.each do |ingredient|%>
-        <option value="<%= ingredient.name%>">
-      <% end %>
-    </datalist>
+    <%= r_i.fields_for :ingredients do |i| %>
+      <%= i.text_field :name, list: "ingredients_autocomplete"%>
+      <!-- Datalist will create dropdown menu for items -->
+      <datalist id="ingredients_autocomplete">
+        <!-- Outputs names for user to choose from -->
+        <% Ingredient.all.each do |ing|%>
+          <option value="<%= ing.name%>">
+        <% end %>
+      </datalist>
+    <% end %>
   <% end %>
   </div>
 
