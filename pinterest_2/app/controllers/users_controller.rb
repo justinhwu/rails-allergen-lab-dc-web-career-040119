@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user.ingredients.build
   end
 
   def update

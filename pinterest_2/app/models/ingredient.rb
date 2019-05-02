@@ -3,5 +3,5 @@ class Ingredient < ApplicationRecord
   has_many :recipes, through: :recipe_ingredients
   has_many :allergens
   has_many :users, through: :allergens
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end

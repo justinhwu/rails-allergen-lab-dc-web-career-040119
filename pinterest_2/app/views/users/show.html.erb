@@ -3,8 +3,9 @@
 
 <ul>
   <% @user.ingredients.each do |allergen| %>
-    <li><%= link_to allergen.name, ingredient_path(allergen) %></li>
+    <li><%= link_to allergen.name, ingredient_path(allergen) %></li><br>
   <% end %>
 <ul>
 
-<%= link_to "Go back to the homepage", users_path%>
+<%= link_to "Go back to the homepage", users_path%><br>
+<%= link_to "Edit user details", edit_user_path(@user)%>
