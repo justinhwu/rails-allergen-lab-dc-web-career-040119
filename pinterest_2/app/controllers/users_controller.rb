@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.ingredients.build
   end
 
   def create

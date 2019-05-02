@@ -1,0 +1,10 @@
+<h1> <%= @user.name %>'s Profile </h1>
+<h3> <%= @user.name %> is allergic to: </h3>
+
+<ul>
+  <% @user.ingredients.each do |allergen| %>
+    <li><%= link_to allergen.name, ingredient_path(allergen) %></li>
+  <% end %>
+<ul>
+
+<%= link_to "Go back to the homepage", users_path%>
