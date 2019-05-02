@@ -1,0 +1,11 @@
+<h1> <%= @ingredient.name%> Details </h1>
+
+<h2> This ingredient appears in these recipes: </h2>
+
+<div class="matching-recipes">
+<ul>
+<% @ingredient.recipes.each do |recipe| %>
+  <li><%= link_to recipe.name, recipe_path(recipe)%></li><br>
+<% end %>
+</ul>
+</div>

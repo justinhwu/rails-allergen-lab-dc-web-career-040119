@@ -1,0 +1,13 @@
+<h1> Welcome to our Recipes index page</h1>
+
+<h3>Here is a list of all the recipes we offer:</h3>
+
+<div class="recipe-list">
+  <ul>
+    <% @recipes.each do |recipe|%>
+      <li><%= link_to recipe.name, recipe_path(recipe)%></li><br>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to "Create a new recipe", new_recipe_path %>

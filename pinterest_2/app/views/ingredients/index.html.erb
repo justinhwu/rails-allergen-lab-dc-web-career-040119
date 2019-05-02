@@ -1,0 +1,9 @@
+<h1> Welcome to the Ingredients index page</h1>
+
+<h2>Here is a list of our ingredients</h2>
+
+<ul>
+<% @ingredients.each do |ingredient|%>
+  <li><%= link_to ingredient.name, ingredient_path(ingredient)%></li><br>
+<% end %>
+</ul>

@@ -8,4 +8,10 @@
 <ul>
 
 <%= link_to "Go back to the homepage", users_path%><br>
-<%= link_to "Edit user details", edit_user_path(@user)%>
+<%= link_to "Edit user details", edit_user_path(@user)%><br>
+
+<div class="delete-button">
+<%= form_tag user_path(@user), method: "delete" do%>
+  <%= submit_tag "Delete this user"%>
+<% end %>
+</div>

@@ -1,0 +1,24 @@
+<%= form_for @recipe do |f| %>
+  <%= f.label :name%>
+  <%= f.text_field :name %><br>
+  <%= f.collection_select :user_id, User.all, :id, :name%><br>
+
+  <div class="existing-ingredients form-box">
+  <label> Select the ingredients for this recipe</label><br>
+  <%= f.fields_for :ingredients do |ingredient| %>
+    <%= ingredient.label "Please enter a quantity for the ingredient"%>
+    <%= ingredient.text_field :quantity%>
+
+
+    <%= ingredient.text_field :name, list: "ingredients_autocomplete"%>
+    <datalist id="ingredients_autocomplete">
+      <% Ingredient.all.each do |ingredient|%>
+        <option value="<%= ingredient.name%>">
+      <% end %>
+    </datalist>
+  <% end %>
+  </div>
+
+
+  <%= f.submit%>
+<%end%>

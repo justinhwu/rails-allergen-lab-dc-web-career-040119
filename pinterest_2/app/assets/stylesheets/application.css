@@ -14,5 +14,10 @@
  *= require_self
  */
 .form-box {
-  border: solid 2px black; 
+  border: solid 2px black;
+}
+
+nav ul li {
+  display: inline;
+  list-style: none;
 }
